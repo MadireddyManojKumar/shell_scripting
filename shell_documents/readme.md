@@ -15,49 +15,6 @@ Running commands by hand, one at a time, has the same handful of problems every 
 
 A shell script fixes the first four: it's a written, repeatable, exact record of the steps, run the same way every time.
 
-### Why scripts still aren't enough on their own
-A script sitting on a server (or a laptop) by itself still has gaps:
-- **No security** — anyone with access to the file can change it, with no record of the change.
-- **No backup** — if the file is deleted or corrupted, that version of the logic is gone.
-- **No versioning** — there's no way to tell "this is version 1.0.0" from "this is version 2.0.0," or to go back to an older one.
-- **No collaboration** — two people editing the same file by hand will overwrite each other.
-- **No review** — nobody gets a chance to check a change before it takes effect.
-- **No tracking** — no history of what changed, when, or why.
-
-This is exactly what a **version control system (VCS)**, also called **source code management (SCM)**, is for.
-
-### VCS/SCM, and where Git fits
-Different tools store different kinds of things:
-- **Git** — stores and versions source code (and scripts).
-- **Google Drive** (and similar) — general file/object storage, not built for tracking code changes.
-- **An artifact repository** (e.g. Nexus, Artifactory) — stores build outputs (artifacts), not source code.
-
-A **repository** is just storage for something — in Git's case, storage for a project's code and its full history of changes.
-
-Basic Git workflow:
-```bash
-# one-time setup, per machine (or per repo with the file flag removed)
-git config --global user.email "you@example.com"
-git config --global user.name "Your Name"
-
-git init                       # turn the current folder into a git repo
-git branch -M main             # name the default branch "main"
-git add .                      # stage all changes
-git commit -m "my first commit"
-git remote add origin <URL>    # point this repo at one on GitHub
-git push origin main           # upload commits to the remote repo
-```
-
-A normal folder becomes a **git repo** the moment it has a hidden `.git` subfolder in it — that's what Git uses to track history. No `.git` folder means it's just a regular folder, with no version tracking at all.
-
-Typical day-to-day flow for one file:
-```bash
-git add 01-hello-world.sh              # stage the file
-git commit -m "my first shell script"  # commit to the local repo
-git push origin main                   # push to the remote repo (e.g. GitHub)
-```
-
-The usual review habit before touching an important shared file: make a copy, make the change in the copy, show it to a lead/reviewer, and only then replace the original once it's approved. Git's review tools (pull requests) are the structured version of this same idea.
 
 ### Shebang
 Every shell script should start with a **shebang** line:
