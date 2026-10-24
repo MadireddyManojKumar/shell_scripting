@@ -34,3 +34,29 @@ echo "The get number of arguments given in command line is : $#"
 #   4. Special variables / Built in shell variables -- Have predefined meanings in the shell.
 #    
 #==================================
+
+
+#Reading variables from user and caliculating area of rectangle using those variables.
+echo "Enter the length of the rectangle:"
+read length
+
+echo "Enter the width of the rectangle:"
+read width
+
+area=$((length * width))
+
+echo "The area of the rectangle is: $area"
+
+
+# Displaying different messages based on the time of the day using if-else statement.
+time=$(date +%H)
+
+if [ $time -lt 12 ]; then
+    message="Good Morning $USER"
+elif [ $time -lt 18 ]; then
+    message="Good Afternoon $USER"
+else
+    message="Good Evening $USER"
+fi
+
+echo "$message"
