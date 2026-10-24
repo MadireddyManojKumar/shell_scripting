@@ -32,12 +32,12 @@ This matters for the same reason **DRY (Don't Repeat Yourself)** matters in any 
 
 **Arguments** are values passed into a script when it's run:
 ```bash
-sh 04-variables.sh John Raheem
+sh 1.variables.sh Manoj Madireddy
 ```
 Inside the script, these show up as numbered variables — `$1` is the first argument, `$2` is the second, and so on:
 ```text
-$1 = John
-$2 = Raheem
+$1 = Manoj
+$2 = Madireddy
 ```
 
 **Command substitution** runs a command and stores its output in a variable, using `$( )`:
@@ -190,7 +190,7 @@ greet_user(){
   echo "Hello $name, your role is $role"
 }
 
-greet_user "Siva" "Trainer"
+greet_user "Manoj" "madireddy"
 ```
 
 Inside the function, `$1`, `$2`, and so on refer to whatever it was called with — scoped to that call, separate from any arguments the overall script was run with.
