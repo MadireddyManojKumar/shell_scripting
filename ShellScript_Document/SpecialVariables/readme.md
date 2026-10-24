@@ -1,3 +1,0 @@
-Shell Script concepts:
-=======================
-
